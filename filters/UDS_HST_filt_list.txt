@@ -1,0 +1,17 @@
+../filters/cfht_U
+../filters/subaru_B
+../filters/f606w
+../filters/subaru_V
+../filters/subaru_R
+../filters/subaru_i
+../filters/f814w
+../filters/subaru_z
+../filters/HAWKI_Y
+../filters/wfcam_J
+../filters/f125w
+../filters/wfcam_H
+../filters/f160w
+../filters/HAWKI_K
+../filters/wfcam_K
+../filters/IRAC1
+../filters/IRAC2

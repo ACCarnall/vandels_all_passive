@@ -1,0 +1,14 @@
+../filters/ECDFS_U_filter
+../filters/f435w
+../filters/ECDFS_V606_filter
+../filters/f775w
+../filters/f814w
+../filters/f850lp
+../filters/f098m
+../filters/f105w
+../filters/f125w
+../filters/f160w
+../filters/ISAAC_Ks
+../filters/HAWKI_K
+../filters/ECDFS_CH1_filter
+../filters/ECDFS_CH2_filter
