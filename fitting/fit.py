@@ -8,6 +8,7 @@ sys.path.append("../utils")
 
 from load_vandels import *
 from get_cat_filt_list import *
+from plot_gp_noise import *
 
 
 def get_fit_instructions_v14():
@@ -96,7 +97,7 @@ fit_instructions = get_fit_instructions_v14()
 fit_cat = pipes.fit_catalogue(IDs, fit_instructions, load_vandels, run="v14",
                               cat_filt_list=cat_filt_list, vary_filt_list=True,
                               redshifts=redshifts, redshift_sigma=0.005,
-                              make_plots=False, full_catalogue=True,
-                              n_posterior=1000)
+                              make_plots=True, full_catalogue=True,
+                              n_posterior=1000, analysis_function=analysis_func)
 
 fit_cat.fit(n_live=1000, verbose=True, mpi_serial=False, track_backlog=False)
