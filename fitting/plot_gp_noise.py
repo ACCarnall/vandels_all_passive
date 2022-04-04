@@ -33,33 +33,6 @@ def analysis_func(fit):
 
     pipes.plotting.add_observed_photometry_linear(fit.galaxy, ax, y_scale=y_scale)
 
-    fit.posterior.samples["const_spectrum"] = np.zeros((fit.n_posterior, fit.galaxy.spectrum.shape[0]))
-
-    for i in range(fit.n_posterior):
-        fit.fitted_model._update_model_components(fit.posterior.samples2d[i, :])
-        const_model_comp = deepcopy(fit.fitted_model.model_components)
-        del const_model_comp["dblplaw"]
-        #const_model_comp["dust"]["eta"] = 5.
-
-        if i == 0:
-            model_galaxy = pipes.model_galaxy(const_model_comp,
-                                              filt_list=fit.galaxy.filt_list,
-                                              spec_wavs=fit.galaxy.spec_wavs,
-                                              index_list=fit.galaxy.index_list)
-
-        else:
-            model_galaxy.update(const_model_comp)
-
-        fit.posterior.samples["const_spectrum"][i, :] = model_galaxy.spectrum[:, 1]
-
-        #ax.plot(fit.galaxy.spectrum[:, 0], fit.posterior.samples["const_spectrum"][i, :]*10**-y_scale, lw=0.5, color="green", alpha=0.4)
-
-    const_spec_post = fit.posterior.samples["const_spectrum"]*10**-y_scale#*10**2
-    const_spec_perc = np.percentile(const_spec_post, (16, 50, 84), axis=0).T
-
-    ax.fill_between(fit.galaxy.spectrum[:,0], const_spec_perc[:, 0],
-                    const_spec_perc[:, 2], color="green", alpha=0.7)
-
     ymax = ax.get_ylim()[1]
     ax.set_ylim(-2.1*noise_max, ymax)
     ax.axhline(0., color="gray", zorder=1, lw=1.)
